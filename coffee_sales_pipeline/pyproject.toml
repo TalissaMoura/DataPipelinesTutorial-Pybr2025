@@ -1,0 +1,9 @@
+[project]
+name = "coffee-sales-pipeline"
+version = "0.1.0"
+description = "Projeto para tutorial do curso de Data Pipelines da Python Brasil 2025"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "great-expectations>=1.7.1",
+]
