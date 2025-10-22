@@ -22,7 +22,3 @@ def run_pipeline(start_datetime: str, end_datetime: str):
     load_data(df_transformed, processed_output_path)
 
     print("✅ Pipeline finalizado com sucesso!")
-
-# Exemplo de execução
-if __name__ == "__main__":
-    run_pipeline(start_datetime="2024-03-01 19:00:00", end_datetime="2024-03-01 19:59:00")
