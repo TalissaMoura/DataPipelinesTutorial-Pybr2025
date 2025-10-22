@@ -1,0 +1,65 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10, 3.11, 3.12]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install flake8 pytest uv black isort
+    - name: Check if we can sync with uv
+      run: |
+        cd coffee_sales_pipeline/src
+        uv sync --dry-run   
+    - name: Lint with flake8
+      run: |
+        cd ../../
+        python3 - m flake8 coffee_sales_pipeline/src --max-line-length=127
+    - name: Format code with black and isort
+      run: |
+        python3 - m black coffee_sales_pipeline/src --check
+        python3 - m isort coffee_sales_pipeline/src --check-only
+  test: 
+    build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10, 3.11, 3.12]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install pytest
+        python3 -m pip install -e ./coffee_sales_pipeline
+    - name: Install package in editable mode and run tests
+      run: |
+        cd coffee_sales_pipeline/tests
+        pytest -q
+
+    
