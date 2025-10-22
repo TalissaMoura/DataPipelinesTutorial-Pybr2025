@@ -8,33 +8,32 @@ def validate_data(source_folder: str, df_extractor: pd.DataFrame) -> pd.DataFram
 
     context = gx.get_context()
 
-    # Define the Data Source's parameters:
-    # This path is relative to the base_directory of the Data Context.
+    # Define o Data Source
     source_folder = source_folder
-    data_source_name = "raw"
+    data_source_name = "filter"
 
-    # Create the Data Source:
+    # Cria um Data Source apontando para o diretório de dados brutos:
     data_source = context.data_sources.add_pandas_filesystem(
         name=data_source_name, base_directory=source_folder
     )
     data_asset_name = "coffee_sales_data_asset"
-    # Add a Data Asset to the Data Source:
+    # Adiciona um Data Asset para arquivos CSV:
     data_asset = data_source.add_csv_asset(name=data_asset_name)
 
     # Define a Batch Definition
     file_data_asset = context.data_sources.get(data_source_name).get_asset(data_asset_name)
     batch_definition_name = "my_batch_definition"
-    batch_definition_path = "raw/coffee_sales_data.csv"
+    batch_definition_path = "filter/coffee_sales_filter.csv"
     batch_definition = file_data_asset.add_batch_definition_path(
         name=batch_definition_name, path=batch_definition_path
     )
-
+    # Define o Batch
     batch = batch_definition.get_batch()
     print(batch.head())
-
+    # Cria uma Expectation Suite
     suite_name = "coffee_sales_expectations"
     suite = context.suites.add(gx.ExpectationSuite(name=suite_name))
-
+    # Cria um Validator
     validator = context.get_validator(
         batch=batch,
         expectation_suite_name=suite_name,
