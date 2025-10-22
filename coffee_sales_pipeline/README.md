@@ -6,7 +6,7 @@
  1 - Install [uv](https://github.com/astral-sh/uv)
  2 - Run the command inside the coffee_sales_pipeline folder
    ```
-        uv install
+        uv sync
    ```
  3 - To activate the venv run:
    ```
