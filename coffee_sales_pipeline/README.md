@@ -18,6 +18,8 @@
      is saved the data we need for the project. You can run the `read_coffee_sales.py` to load the dataset. 
      - pipeline: contains the modules and file for 
      the data pipeline for the coffee sales project. 
-     - streamlit: contains the modules and functions for the dashboard. 
-       
+     - streamlit: contains the modules and functions for the dashboard. To visualize the dashboard call:
+     ```
+        uv run streamlit run streamlit_app.py
+     ```
    - tests: Contains the test files for the pipeline.
