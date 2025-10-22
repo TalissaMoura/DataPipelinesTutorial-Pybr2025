@@ -19,8 +19,7 @@ Mas calma — antes de responder essas perguntas, precisamos entender **o que me
 
 Com base nisso, definimos algumas métricas-chave para monitorar **a cada hora**:
 - Quantidade e valor médio das vendas;
-- Vendas por tipo de café;
-- Número de transações por método de pagamento.
+- Vendas por tipo de café e qual café é o mais popular;
 
 Vamos usar o dataset [**Coffee Sales**](https://www.kaggle.com/datasets/navjotkaushal/coffee-sales-dataset) como base e exibir tudo em um **dashboard interativo feito com Streamlit**. Assim, seu cliente só precisa olhar a tela — e confiar que os números ali são tão confiáveis quanto seu barista favorito.
 
