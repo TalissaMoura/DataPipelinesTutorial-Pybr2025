@@ -1,2 +1,2 @@
 event_timestamp,total_vendas,valor_total,vendas_por_tipo,media_por_hora
-2025-10-22 17:05:49.858712,3,106.3,"[{'coffee_name': 'Americano with Milk', 'qtd_vendas': 2, 'valor_total': 67.6}, {'coffee_name': 'Cocoa', 'qtd_vendas': 1, 'valor_total': 38.7}]","[{'hour_of_day': 19, 'qtd_vendas': 3, 'valor_medio': 35.43333333333333}]"
+2025-10-22 17:18:11.402639,3,106.3,"[{'coffee_name': 'Americano with Milk', 'qtd_vendas': 2, 'valor_total': 67.6}, {'coffee_name': 'Cocoa', 'qtd_vendas': 1, 'valor_total': 38.7}]","[{'hour_of_day': 19, 'qtd_vendas': 3, 'valor_medio': 35.43333333333333}]"
