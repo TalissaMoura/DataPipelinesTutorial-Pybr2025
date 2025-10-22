@@ -41,7 +41,6 @@ jobs:
         python3 - m black coffee_sales_pipeline/src --check
         python3 - m isort coffee_sales_pipeline/src --check-only
   test: 
-    build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
