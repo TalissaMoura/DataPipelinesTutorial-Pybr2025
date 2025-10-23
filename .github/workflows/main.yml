@@ -26,7 +26,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd coffee_sales_pipeline
           uv sync
+          cd ..
 
       - name: Run tests
         run: |
