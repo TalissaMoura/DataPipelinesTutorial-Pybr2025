@@ -33,4 +33,6 @@ jobs:
       - name: Run tests
         run: |
           cd coffee_sales_pipeline
+          source .venv/bin/activate
+          cd ..
           uv run python -m pytest -v --maxfail=1 --disable-warnings
