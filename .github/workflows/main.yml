@@ -28,8 +28,11 @@ jobs:
         run: |
           cd coffee_sales_pipeline
           uv sync
+    
+      - name: Voltar para o diretório raiz
+        run: |
+          cd $GITHUB_WORKSPACE
 
       - name: Run tests
         run: |
-          cd ..
           uv run pytest -v --maxfail=1 --disable-warnings
