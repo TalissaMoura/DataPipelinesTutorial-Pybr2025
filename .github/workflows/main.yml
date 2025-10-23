@@ -29,11 +29,8 @@ jobs:
           cd coffee_sales_pipeline
           uv sync
           uv pip install -e .
-    
-      - name: Voltar para o diretório raiz
-        run: |
-          cd $GITHUB_WORKSPACE
 
       - name: Run tests
         run: |
+          cd coffee_sales_pipeline
           uv run pytest -v --maxfail=1 --disable-warnings
