@@ -28,6 +28,8 @@ jobs:
         run: |
           cd coffee_sales_pipeline
           uv sync
+          cd ..
+          uv pip install -e .
     
       - name: Voltar para o diretório raiz
         run: |
