@@ -3,6 +3,7 @@ from pipeline.validate import validate_data
 from pipeline.transform import transform_data
 from pipeline.load import load_data
 import os
+import pandas as pd
 
 def run_pipeline(start_datetime: str, end_datetime: str):
     """Executa todo o pipeline de vendas de café para um intervalo de data e hora específico."""
@@ -19,10 +20,10 @@ def run_pipeline(start_datetime: str, end_datetime: str):
     df_raw = extract_data(raw_path, start_datetime, end_datetime, filtered_output_path)
     df_valid = validate_data(DATA_DIR, df_raw)  # Usa Great Expectations
     df_transformed = transform_data(df_valid)
-    load_data(df_transformed, processed_output_path)
+    if load_data(df_transformed, processed_output_path):
+        print("✅ Pipeline concluído com sucesso!")
+        return True
+    else:
+        print("Pipeline não produziu dados para salvar.")
+        return pd.DataFrame()
 
-    print("✅ Pipeline finalizado com sucesso!")
-
-# Exemplo de execução
-if __name__ == "__main__":
-    run_pipeline(start_datetime="2024-03-01 19:00:00", end_datetime="2024-03-01 19:59:00")
